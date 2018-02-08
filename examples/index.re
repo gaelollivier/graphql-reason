@@ -1,0 +1,1 @@
+Schema.create(~query=ObjectType.create(), ());
