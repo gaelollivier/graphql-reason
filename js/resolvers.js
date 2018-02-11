@@ -12,6 +12,7 @@ const generateJsResolver = typeName => {
   return (src, args, ctx) => resolver(src, args, ctx).then(toJs);
 };
 
+// Generate resolver map, using Reason resolvers
 export default {
   Query: {
     posts: generateJsResolver('posts'),

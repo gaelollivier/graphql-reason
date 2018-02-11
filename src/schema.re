@@ -1,5 +1,5 @@
 /*
-     reason types from graphql
+     reason types from graphql schema
      TODO: automatically generate this from GraphQL schema :)
  */
 module Post = {
