@@ -1,15 +1,6 @@
 {
-  "name": "graphql-reason",
+  "name": "GraphQLReason",
+  "sources": "src",
   "bsc-flags": ["-bs-super-errors"],
-  "refmt": 3,
-  "sources": [
-    {
-      "dir": "src",
-      "public": "all"
-    },
-    {
-      "dir": "examples",
-      "type": "dev"
-    }
-  ]
+  "refmt": 3
 }

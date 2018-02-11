@@ -1,18 +1,64 @@
 {
   "name": "graphql-reason",
-  "version": "0.1.0",
-  "description": "GraphQL-js bindings for ReasonML",
+  "version": "1.0.0",
   "scripts": {
+    "start": "node build/index.js",
+    "lint": "eslint js",
+    "build-js": "rm -rf build && babel js -d build",
     "build": "bsb -make-world",
-    "start": "bsb -make-world -w",
-    "clean": "bsb -clean-world"
+    "clean": "bsb -clean-world && rm -rf build"
   },
-  "author": "Gael du Plessix",
-  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "graphql": "^0.12.3",
+    "graphql-import": "^0.4.3",
+    "graphql-tools": "^2.20.2",
+    "lodash": "^4.17.5",
+    "morgan": "^1.9.0",
+    "node-fetch": "^2.0.0"
+  },
   "devDependencies": {
-    "bs-platform": "^2.0.0"
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "bs-platform": "^2.1.0",
+    "eslint": "^4.17.0"
   },
-  "peerDependencies": {
-    "graphql": "^0.13.0"
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "8"
+          }
+        }
+      ]
+    ],
+    "plugins": ["transform-object-rest-spread"]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "no-console": 0,
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_",
+          "varsIgnorePattern": "^_"
+        }
+      ]
+    }
   }
 }

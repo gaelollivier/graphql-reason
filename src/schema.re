@@ -1,13 +1,16 @@
-type t;
+/*
+     reason types from graphql
+     TODO: automatically generate this from GraphQL schema :)
+ */
+module Post = {
+  [@bs.deriving {jsConverter: newType}]
+  type t = {
+    id: int,
+    title: string
+  };
+};
 
-type schemaConfig;
+let postToJs = Post.tToJs;
 
-[@bs.obj]
-external makeConfig :
-  (~query: ObjectType.t, ~mutation: option(ObjectType.t)=?, unit) => schemaConfig =
-  "";
-
-[@bs.new] [@bs.module "graphql"] external createWithConfig : schemaConfig => t = "GraphQLSchema";
-
-let create = (~query: ObjectType.t, ~mutation: option(ObjectType.t)=?, ()) =>
-  createWithConfig(makeConfig(~query, ~mutation, ()));
+let postsToJs: list(Post.t) => array(Post.abs_t) =
+  (l) => l |> List.map(Post.tToJs) |> Array.of_list;
