@@ -13,6 +13,10 @@ console.log('Initializing schema...');
 // load schema files (relative to build/index.js)
 const typeDefs = importSchema(__dirname + '/../schema/schema.graphql');
 
+import { generateReasonSchema } from './codegen';
+
+generateReasonSchema(typeDefs);
+
 const schema = makeExecutableSchema({
   typeDefs,
   resolvers,

@@ -24,7 +24,8 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "bs-platform": "^2.1.0",
-    "eslint": "^4.17.0"
+    "eslint": "^4.17.0",
+    "invariant": "^2.2.2"
   },
   "babel": {
     "presets": [
@@ -37,7 +38,9 @@
         }
       ]
     ],
-    "plugins": ["transform-object-rest-spread"]
+    "plugins": [
+      "transform-object-rest-spread"
+    ]
   },
   "prettier": {
     "singleQuote": true,

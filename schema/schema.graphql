@@ -1,9 +1,27 @@
+type User {
+  id: Int!
+  name: String
+  names: [String]
+  posts1: [Post]
+  posts2: [Post!]
+  posts3: [Post]!
+  posts4: [Post!]!
+  group: Group
+}
+
+type Group {
+  id: Int!
+  name: String!
+  users: [User]
+}
+
 type Post {
   id: Int!
   title: String!
+  author: User
 }
 
 type Query {
-  post: Post
+  post(id: Int!): Post
   posts: [Post]
 }
