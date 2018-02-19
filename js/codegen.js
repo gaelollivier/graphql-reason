@@ -39,6 +39,7 @@ export function generateReasonSchema(typedefs) {
             .join(',\n')}\n}`,
       )
       .join('\nand ');
+  console.log(typesDeclaration);
   console.log(toJsHelpers);
 }
 

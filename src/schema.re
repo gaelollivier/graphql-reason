@@ -29,7 +29,7 @@ let optionToJs: ('t => 'js, option('t)) => Js.nullable('js) =
 let rec userToJs = (user: user) => {
   "id": user.id,
   "name": user.name,
-  "posts": user.posts |> optionToJs(optionPostsToJs),
+  "posts": user.posts |> optionToJs(postOptionListToJs),
   "group": optionToJs(groupToJs, user.group)
 }
 and groupToJs = (group: group) => {
@@ -42,7 +42,7 @@ and postToJs = (post: post) => {
   "title": post.title,
   "author": userToJs(post.author)
 }
-and optionPostToJs = (optionPost: option(post)) => optionPost |> optionToJs(postToJs)
-and optionPostsToJs = (optionPosts: list(option(post))) =>
-  optionPosts |> List.map(optionPostToJs) |> Array.of_list
+and postOptionToJs = (postOption: option(post)) => postOption |> optionToJs(postToJs)
+and postOptionListToJs = (postOptionList: list(option(post))) =>
+  postOptionList |> List.map(postOptionToJs) |> Array.of_list
 and postsToJs = (l) => l |> List.map(postToJs) |> Array.of_list;
